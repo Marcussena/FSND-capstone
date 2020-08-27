@@ -5,9 +5,9 @@ from flask_migrate import Migrate
 from flask_moment import Moment
 import json
 
-#database_name = "agency"
-#database_path = 'postgresql://postgres:postgres@localhost:5432/agency'
-database_path = os.environ['DATABASE_URL']
+database_name = "agency"
+database_path = 'postgresql://postgres:postgres@localhost:5432/agency'
+#database_path = os.environ['DATABASE_URL']
 
 db = SQLAlchemy()
 moment = Moment()
