@@ -1,4 +1,4 @@
-export DATABASE_URL=postgres://rerowveakuthuf:ebc1bc2ddbfde94150e4ba088d9ebde2ca359501068066f75bc259e4dac78e48@ec2-34-195-115-225.compute-1.amazonaws.com:5432/d77knk0rpk8617
+export DATABASE_URL=postgres://qdbgxipjmzxcjq:aa74f9d514527cf631bc1b8ddbe1a0d005c202671b316c321c0e4d29f8a848b4@ec2-35-171-31-33.compute-1.amazonaws.com:5432/d5ts49du6otn3e
 export AUTH0_DOMAIN='marcus-capstone.us.auth0.com'
 export ALGORITHMS=['RS256']
 export API_AUDIENCE='myAgency'
