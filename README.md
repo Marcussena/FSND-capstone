@@ -17,23 +17,22 @@ The Casting Agency models a company that is responsible for creating movies and 
 - Casting Assistant
 
 	- Can view actors and movies
-	- Casting Director
-All permissions a Casting Assistant has and…
-Add or delete an actor from the database
-Modify actors or movies
-Executive Producer
-All permissions a Casting Director has and…
-Add or delete a movie from the database
-- Casting agent: Can view actors and movies.
-- Casting director: Can view, add, modify, or delete actors; can view and modify movies.
-- Executive producer: Can view, add, modify, or delete actors and movies. 
+- Casting Director
+
+	- All permissions a Casting Assistant has and…
+	- Add or delete an actor from the database
+	- Modify actors or movies
+- Executive Producer
+	- All permissions a Casting Director has and…
+	- Add or delete a movie from the database
 
 
 # Running tests
 
-To run the unittests, first CD into the Capstone folder and run the following command:
+To run the unittests, restore a database using the agency_test.psql file provided. From the project folder in terminal run:
 ```
-python -m agency.tests
+psql agency > agency_test.
+python tests.py
 ```
 
 # API Documentation
