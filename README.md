@@ -38,60 +38,14 @@ python tests.py
 # ENDPOINTS
 `GET '/'`
 
-	- Shows a simple message to test if the environment is running properly:
+- Shows a simple message to test if the environment is running properly:
+	
 	
 	```
 	{"Ok":"It is running"}
 	
 	```
 	
-
-
-Errors
-`401`
-`403`
-`404`
-`422`
-
-Note: all error handlers return a JSON object with the request status and error message.
-
-401
-- 401 error handler is returned when there is an issue with the authentication necessary for the action being requested. 
-```
-{
-	"error": 401,
-	"message": "Authentication error.",
-	"success": false
-}
-```
-403
-- 403 error handler occurs when the requested action is not allowed, i.e. incorrect permissions.
-```
-{
-	"error": 403,
-	"message": "Forbidden.",
-	"success": false
-}
-```
-404
-- 404 error handler occurs when a request resource cannot be found in the database, i.e. an actor with a nonexistent ID is requested.
-```
-{
-	"error": 404,
-	"message": "Item not found.",
-	"success": false
-}
-```
-422
-- 422 error handler is returned when the request contains invalid arguments, i.e. a difficulty level that does not exist.
-```
-{
-	"error": 422,
-	"message": "Request could not be processed.",
-	"success": false
-}
-```
-
 Endpoints
 `GET '/actors'`
 `GET '/movies'`
@@ -103,94 +57,92 @@ Endpoints
 `DELETE '/movies/<int:movie_id>'`
 
 GET '/actors'
-- Fetches a JSON object with a list of actors in the database.
-- Request Arguments: None
-- Returns: An object with a single key, actors, that contains multiple objects with a series of string key pairs.
+- Shows the list of actors in the database:
 ```
 {
     "actors": [
         {
-            "age": "45",
-            "gender": "male",
-            "id": 1,
-            "name": "Leonardo DiCaprio"
+            "actor_age": 61,
+            "actor_gender": "Male",
+            "actor_name": "Kevin Spacey",
+            "id": 2
         },
         {
-            "age": "42",
-            "gender": "male",
-            "id": 2,
-            "name": "Jensen Ackles"
+            "actor_age": 53,
+            "actor_gender": "male",
+            "actor_name": "Adam Sandler",
+            "id": 4
         },
         {
-            "age": "70",
-            "gender": "female",
-            "id": 3,
-            "name": "Meryl Streep"
+            "actor_age": 62,
+            "actor_gender": "female",
+            "actor_name": "Meryl Streep",
+            "id": 5
         },
         {
-            "age": "37",
-            "gender": "female",
-            "id": 4,
-            "name": "Anne Hathaway"
+            "actor_age": 90,
+            "actor_gender": "female",
+            "actor_name": "Fernanda Montenegro",
+            "id": 6
+        },
+        {
+            "actor_age": 34,
+            "actor_gender": "female",
+            "actor_name": "Fernanda Paes Leme",
+            "id": 7
         }
     ],
     "success": true
 }
 ```
 GET '/movies'
-- Fetches a JSON object with a list of movies in the database.
+- Shows a list of movies in the database.
 - Request Arguments: None
 - Returns: An object with a single key, movies, that contains multiple objects with a series of string key pairs.
 ```
 {
     "movies": [
         {
-            "id": 1,
-            "release": "December 19, 1997",
-            "title": "Titatic"
+            "movie": "King Speech",
+            "release_date": "07/18/2019"
         },
         {
-            "id": 3,
-            "release": "January 16, 2009",
-            "title": "My Bloody Valentine"
+            "movie": "Lion King",
+            "release_date": "07/18/2019"
         },
         {
-            "id": 4,
-            "release": "May 23rd, 1980",
-            "title": "The Shining"
+            "movie": "Lion King",
+            "release_date": "07/18/2019"
         }
     ],
     "success": true
 }
 ```
-POST '/add-actor'
-- Posts a new actor to the database, including the name, age, gender, and actor ID, which is automatically assigned upon insertion.
-- Request Arguments: Requires three string arguments: name, age, gender.
-- Returns: An actor object with the age, gender, actor ID, and name.
+POST '/actor'
+- Posts a new actor to the database, including the name, age and gender
+- Returns: A list of actors in the database including the new actor added and a message of success.
 
 ```
 {
-    "actor": {
-        "age": "36",
-        "gender": "male",
-        "id": 6,
-        "name": "Henry Cavill"
-    },
+    {
+            "actor_age": 52,
+            "actor_gender": "male",
+            "actor_name": "Nick Offerman",
+            "id": 8
+     }
     "success": true
 }
 ```
-POST '/add-movie'
-- Posts a new movie to the database, including the title, release, and movie ID, which is automatically assigned upon insertion.
-- Request Arguments: Requires two string arguments: title, release.
-- Returns: A movie object with the movie ID, release, and title.
+POST 'movie'
+- Posts a new movie to the database, including the title and release date
+- Returns the list of movies in the database including the new movie added and a message of success.
 
 ```
 {
-    "movie": {
-        "id": 5,
-        "release": "November 3, 2017",
-        "title": "Thor: Ragnarok"
-    },
+    {
+            "movie": "Lion King",
+            "release_date": "07/18/2019"
+    }
     "success": true
 }
 ```
