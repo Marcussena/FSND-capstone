@@ -2,13 +2,28 @@
 Capstone Project Udacity
 
 Heroku address: https://myagencyapp.herokuapp.com/
+
 Local address: http://127.0.0.1:5000/
 
 Auth0 information for endpoints that require authentication can be found in `setup.sh`.
 
 # Intro
 
-The Casting Agency API supports a basic castic agency by allowing users to query the database for movies and actors. There are three different user roles (and related permissions), which are:
+The Casting Agency models a company that is responsible for creating movies and managing and assigning actors to those movies. You are an Executive Producer within the company and are creating a system to simplify and streamline your process.
+
+- Roles:
+
+
+- Casting Assistant
+
+	- Can view actors and movies
+	- Casting Director
+All permissions a Casting Assistant has and…
+Add or delete an actor from the database
+Modify actors or movies
+Executive Producer
+All permissions a Casting Director has and…
+Add or delete a movie from the database
 - Casting agent: Can view actors and movies.
 - Casting director: Can view, add, modify, or delete actors; can view and modify movies.
 - Executive producer: Can view, add, modify, or delete actors and movies. 
