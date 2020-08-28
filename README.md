@@ -45,16 +45,7 @@ python tests.py
 	{"Ok":"It is running"}
 	
 	```
-	
-Endpoints
-`GET '/actors'`
-`GET '/movies'`
-`POST '/add-actor'`
-`POST '/add-movie'`
-`PATCH '/actors/<int:actor_id>'`
-`PATCH '/movies/<int:movie_id>'`
-`DELETE '/actors/<int:actor_id>'`
-`DELETE '/movies/<int:movie_id>'`
+
 
 GET '/actors'
 - Shows the list of actors in the database:
@@ -118,7 +109,7 @@ GET '/movies'
     "success": true
 }
 ```
-POST '/actor'
+POST '/actors'
 - Posts a new actor to the database, including the name, age and gender
 - Returns: A list of actors in the database including the new actor added and a message of success.
 
@@ -133,7 +124,7 @@ POST '/actor'
     "success": true
 }
 ```
-POST 'movie'
+POST '/movies'
 - Posts a new movie to the database, including the title and release date
 - Returns the list of movies in the database including the new movie added and a message of success.
 
@@ -146,62 +137,75 @@ POST 'movie'
     "success": true
 }
 ```
-PATCH '/actors/<int:actor_id>'
-- Patches an existing actor in the database.
-- Request arguments: Actor ID, included as a parameter following a forward slash (/), and the key to be updated passed into the body as a JSON object. For example, to update the age for '/actors/6'
+PATCH '/actors/<id>'
+- Modifies an existing actor in the database.
+- Returns a message of success and the id of the actor updated
+	
 ```
 {
-	"age": "36"
-}
-```
-- Returns: An actor object with the full body of the specified actor ID.
-```
-{
-    "actor": {
-        "age": "36",
-        "gender": "male",
-        "id": 6,
-        "name": "Henry Cavill"
-    },
-    "success": true
+    "success": true,
+    "updated": {
+        "actor_age": 54,
+        "actor_gender": "male",
+        "actor_name": "Nick Offerman",
+        "id": 8
 }
 ```
 PATCH '/movies/<int:movie_id>'
-- Patches an existing movie in the database.
-- Request arguments: Movie ID, included as a parameter following a forward slash (/), and the key to be updated, passed into the body as a JSON object. For example, to update the age for '/movies/5'
+- Modifies a existing movie in the database.
+- Returns a message of success and the id of the movie updated
+
 ```
 {
-	"release": "November 3, 2017"
+    "success": true,
+    "updated": {
+        "movie": "Finding Nemo",
+        "release_date": "11/15/2005"
 }
 ```
-- Returns: A movie object with the full body of the specified movie ID.
-```
-{
-    "movie": {
-        "id": 5,
-        "release": "November 3, 2017",
-        "title": "Thor: Ragnarok"
-    },
-    "success": true
-}
-```
-DELETE '/actors/<int:actor_id>'
+DELETE '/actors/<id>'
 - Deletes an actor in the database via the DELETE method and using the actor id.
-- Request argument: Actor id, included as a parameter following a forward slash (/).
-- Returns: ID for the deleted question and status code of the request.
+- Returns the id of the deleted actor and a message of success.
+	
 ```
 {
 	'id': 5,
 	'success': true
 }
 ```
-DELETE '/movies/<int:movie_id>'
-- Deletes a movie in the database via the DELETE method and using the movie id.
-- Request argument: Movie id, included as a parameter following a forward slash (/).
-- Returns: ID for the deleted question and status code of the request.
+DELETE '/movies/<id>'
+- Deletes an actor in the database via the DELETE method and using the movie id.
+- Returns the id of the deleted actor and a message of success.
+	
 ```
 {
 	'id': 5,
 	'success': true
 }
 ```
+
+
+# ERROR HANDLING
+
+The API will return the following errors based on how the request fails:
+
+- 400: Bad Request
+- 401: Unauthorized
+- 404: Not Found
+- 405: Method Not Allowed
+- 422: Unprocessable Entity
+
+# REFERENCES
+
+- I consulted the following websites as reference:
+
+	- https://www.postgresqltutorial.com/postgresql-backup-database/ Postgres backup
+	- https://docs.sqlalchemy.org/en/13/errors.html#error-e3q8 SQLAlchemy Error messages
+	- https://devcenter.heroku.com/articles/git Heroku deploying with git
+	- https://trstringer.com/logging-flask-gunicorn-the-manageable-way/ Solving problems with gunicorn
+	
+- I also have consulted the following github projects for insight and troubleshooting:
+
+	- https://github.com/the-geekiest-nerd/FSND-Capstone Idea for how to parse authorization headers when testing
+	- https://github.com/varlese/FSND-capstone This project helped me to solve some problems I had with errorhandling
+	- https://github.com/HyunlangBan/udacity_heroku_sample The sample showed in this project helped me to solve an error when deploying with heroku
