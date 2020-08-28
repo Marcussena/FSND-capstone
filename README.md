@@ -1,5 +1,11 @@
 # FSND-capstone
 Capstone Project Udacity
+
+Heroku address: https://myagencyapp.herokuapp.com/
+Local address: http://127.0.0.1:5000/
+
+Auth0 information for endpoints that require authentication can be found in `setup.sh`.
+
 # Intro
 
 The Casting Agency API supports a basic castic agency by allowing users to query the database for movies and actors. There are three different user roles (and related permissions), which are:
@@ -7,11 +13,6 @@ The Casting Agency API supports a basic castic agency by allowing users to query
 - Casting director: Can view, add, modify, or delete actors; can view and modify movies.
 - Executive producer: Can view, add, modify, or delete actors and movies. 
 
-# Running the API [TODO]
-
-API endpoints can be accessed via https://capstone-fsnd-varlese.herokuapp.com/
-
-Auth0 information for endpoints that require authentication can be found in `setup.sh`.
 
 # Running tests
 
