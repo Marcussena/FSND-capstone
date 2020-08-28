@@ -35,7 +35,17 @@ psql agency > agency_test.
 python tests.py
 ```
 
-# API Documentation
+# ENDPOINTS
+`GET '/'`
+
+	- Shows a simple message to test if the environment is running properly:
+	
+	```
+	{"Ok":"It is running"}
+	
+	```
+	
+
 
 Errors
 `401`
